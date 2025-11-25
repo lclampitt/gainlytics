@@ -151,3 +151,63 @@
   color: #00e0ff;
 }
 
+/* === New Interactive Onboarding Checklist === */
+
+.onboarding-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.onboarding-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.onboarding-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1px solid #3a3f4b;
+  background: #0b0d14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.onboarding-checkbox.checked {
+  background: #00cfff;
+  border-color: #00cfff;
+}
+
+.checkmark {
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.onboarding-text {
+  flex: 1;
+  cursor: pointer;
+}
+
+.onboarding-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e6eef5;
+}
+
+.onboarding-open {
+  float: right;
+  font-size: 0.8rem;
+  color: #00cfff;
+  margin-left: 10px;
+}
+
+.onboarding-text:hover .onboarding-open {
+  text-decoration: underline;
+}

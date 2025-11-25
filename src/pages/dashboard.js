@@ -20,27 +20,62 @@ function Card({ title, cta, children }) {
 }
 
 function OnboardingChecklist() {
-  const steps = [
-    { label: 'Add measurements or photo', done: false },
-    { label: 'Make a goal', done: true },
-    { label: 'Generate plan', done: true },
-    { label: 'Log first workout', done: false },
+  const STORAGE_KEY = 'gainlytics_checklist_v1';
+
+  const defaultSteps = [
+  { id: 'photo', label: 'Add measurements or photo', route: '/analyzer' },
+  { id: 'goal', label: 'Make a goal', route: '/goalplanner' },
+  { id: 'workout', label: 'Log workout', route: '/workouts' },
+  { id: 'progress', label: 'Update progress', route: '/progress' },
   ];
+
+
+  const [completed, setCompleted] = React.useState({});
+
+  // Load saved progress
+  React.useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (saved) setCompleted(saved);
+    } catch {}
+  }, []);
+
+  // Save progress when changed
+  React.useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(completed));
+  }, [completed]);
+
+  const toggle = (id) => {
+    setCompleted((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   return (
     <div className="onboarding-box">
       <p className="onboarding-title">Getting started</p>
-      <ul>
-        {steps.map((s) => (
-          <li key={s.label}>
-            <span>{s.done ? '✅' : '⬜️'}</span>
-            <span>{s.label}</span>
+      <ul className="onboarding-list">
+        {defaultSteps.map((step) => (
+          <li key={step.id} className="onboarding-item">
+            <button
+              className={`onboarding-checkbox ${completed[step.id] ? 'checked' : ''}`}
+              onClick={() => toggle(step.id)}
+            >
+              {completed[step.id] && <span className="checkmark">✓</span>}
+            </button>
+
+            <div
+              className="onboarding-text"
+              onClick={() => (window.location.href = step.route)}
+            >
+              <span className="onboarding-label">{step.label}</span>
+              <span className="onboarding-open">Open</span>
+            </div>
           </li>
         ))}
       </ul>
     </div>
   );
 }
+
 
 export default function Dashboard() {
   return (
@@ -76,7 +111,7 @@ export default function Dashboard() {
 
         <div className="dashboard-subgrid">
           <Card title="Exercise Library" cta={{ href: '/exercises', label: 'Browse' }}>
-            <p>Filter by muscle group. Learn form cues. Add to workouts.</p>
+            <p>Filter by muscle group. Learn form cues.</p>
           </Card>
 
           <Card title="Workouts" cta={{ href: '/workouts', label: 'Log Workout' }}>
