@@ -13,23 +13,14 @@ import os
 app = FastAPI(title="AI Body Analyzer")
 
 # -------------------------------------------------
-# CORS – allow React dev server to call API
+# CORS – allow browser clients to call API
+# (For a school/portfolio project, it's fine to open this up.
+#  If you lock this down later, swap allow_origins=["*"] for a list.)
 # -------------------------------------------------
-origins = [
-    "http://localhost:3000",
-    "http://localhost:5173",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:5173",
-    
-    # production frontend
-    "https://gainlytics.vercel.app",
-    "https://gainlytics.org",
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],        # allow all origins (Vercel, localhost, etc.)
+    allow_credentials=False,    # must be False when using "*"
     allow_methods=["*"],
     allow_headers=["*"],
 )
