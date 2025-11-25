@@ -1,0 +1,83 @@
+.calculator-container {
+  background-color: #0e0f1a;
+  color: #fff;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 204, 255, 0.08);
+}
+
+.calculator-container h2 {
+  color: #00cfff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.calculator-container label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.calculator-container input,
+.calculator-container select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111223;
+  color: #fff;
+  transition: border-color 0.2s;
+}
+
+.calculator-container input:focus,
+.calculator-container select:focus {
+  border-color: #00cfff;
+  outline: none;
+}
+
+.calculator-container button {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #00cfff;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.calculator-container button:hover {
+  background-color: #00b3e0;
+}
+
+.results {
+  margin-top: 20px;
+  background: #141626;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #222;
+}
+
+.results p {
+  margin: 6px 0;
+  color: #9ad0ff;
+}
+
+/* ===== BODY FAT RANGE SLIDER ===== */
+input[type='range'] {
+  width: 100%;
+  margin-top: 6px;
+  accent-color: #00cfff;
+}
+
+.bf-value {
+  display: block;
+  text-align: right;
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 1rem;
+}

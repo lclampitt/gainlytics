@@ -1,0 +1,214 @@
+.goalplanner-container {
+  padding: 20px;
+  color: white;
+}
+
+.goalplanner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.goalplanner-toggle {
+  margin-left: 8px;
+  padding: 8px 12px;
+  background-color: #333;
+  color: white;
+  border: 1px solid #666;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.goalplanner-toggle:hover {
+  background-color: #00cfff;
+  color: black;
+}
+
+.goalplanner-loading {
+  color: #aaa;
+}
+
+.goalplanner-error {
+  margin-top: 10px;
+  color: #ff6b6b;
+}
+
+.goalplanner-message {
+  margin-top: 10px;
+  color: #9ad0ff;
+}
+
+.goalplanner-message.success {
+  color: #00ff99;
+}
+
+/* ===== FORM ===== */
+.goalplanner-form {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #1a1b2e;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+.goalplanner-form h3 {
+  color: #00cfff;
+  margin-top: 0;
+}
+
+.goalplanner-goal-options {
+  margin-bottom: 12px;
+}
+
+.goalplanner-option {
+  margin-right: 6px;
+  margin-bottom: 6px;
+  padding: 6px 12px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.goalplanner-option.selected {
+  background-color: #00cfff;
+  color: black;
+}
+
+.goalplanner-input-group {
+  margin-bottom: 8px;
+}
+
+.goalplanner-input-group label {
+  margin-right: 10px;
+  text-transform: capitalize;
+  width: 90px;
+  display: inline-block;
+}
+
+.goalplanner-input-group input {
+  width: 120px;
+  padding: 6px;
+  background-color: #111;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 6px;
+}
+
+.goalplanner-input-group span {
+  margin-left: 8px;
+  color: #888;
+}
+
+.goalplanner-timeframe {
+  width: 120px;
+  padding: 6px;
+  background-color: #111;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 6px;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.goalplanner-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.goalplanner-actions .save {
+  padding: 10px 16px;
+  background-color: #00cfff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.goalplanner-actions .save:disabled {
+  background-color: #2a8db0;
+  cursor: not-allowed;
+}
+
+.goalplanner-actions .delete {
+  padding: 10px 16px;
+  background-color: #2b2b2b;
+  color: #ff8d8d;
+  border: 1px solid #444;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== CONFIRM DELETE ===== */
+.goalplanner-confirm {
+  margin-top: 12px;
+  padding: 12px;
+  background-color: #241d1d;
+  border: 1px solid #5a2c2c;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.goalplanner-confirm .confirm-yes {
+  padding: 8px 12px;
+  background-color: #c93030;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.goalplanner-confirm .confirm-cancel {
+  padding: 8px 12px;
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ===== VIEW MODE ===== */
+.goalplanner-view {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: #1a1b2e;
+  border-radius: 8px;
+  border: 1px solid #2e2e2e;
+  box-shadow: 0 0 15px rgba(0, 204, 255, 0.08);
+}
+
+.goalplanner-view h3 {
+  margin-top: 0;
+  color: #00cfff;
+}
+
+/* ===== Compact Mode (Dashboard) ===== */
+.goalplanner-container.compact .goalplanner-view {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.goalplanner-container.compact .goalplanner-view h3 {
+  font-size: 1rem;
+  color: #00cfff;
+}
+
+.goalplanner-container.compact p {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.goalplanner-container.compact .goalplanner-header {
+  display: none;
+}

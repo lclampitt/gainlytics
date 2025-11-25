@@ -1,0 +1,252 @@
+.workout-logger {
+  padding: 2rem;
+  color: #fff;
+  background-color: #0e0f1a;
+  min-height: 100vh;
+}
+
+.workout-title {
+  color: #00cfff;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.workout-subtext {
+  color: #9aa0a6;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Header section (date + name) */
+.workout-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.workout-header label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.workout-header input {
+  background: #121222;
+  border: 1px solid #2e2e2e;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+/* Add exercise bar */
+.exercise-adder {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.exercise-adder input {
+  width: 260px;
+  background: #121222;
+  border: 1px solid #2e2e2e;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.exercise-adder button {
+  background-color: #00cfff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.exercise-adder button:hover {
+  background-color: #00b3e0;
+}
+
+/* Each exercise block */
+.exercise-block {
+  background: #141421;
+  border: 1px solid #2e2e2e;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exercise-header h3 {
+  color: #00cfff;
+  margin: 0;
+}
+
+/* Table layout */
+.sets-table {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-collapse: collapse;
+}
+
+.sets-table th,
+.sets-table td {
+  border: 1px solid #2e2e2e;
+  padding: 6px;
+  text-align: center;
+}
+
+.sets-table th {
+  color: #00cfff;
+  font-weight: 600;
+}
+
+.sets-table input {
+  width: 90%;
+  background: #111223;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.add-set-btn {
+  margin-top: 0.5rem;
+  background: transparent;
+  border: 1px solid #00cfff;
+  color: #00cfff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-set-btn:hover {
+  background-color: rgba(0, 204, 255, 0.1);
+}
+
+.save-btn {
+  display: block;
+  margin: 1.5rem auto;
+  background-color: #00cfff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.save-btn:hover {
+  background-color: #00b3e0;
+}
+
+.workout-message {
+  text-align: center;
+  color: #00ff99;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+/* ==== Workout History Section ==== */
+.history-title {
+  color: #00cfff;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.history-card {
+  background-color: #11121b;
+  border: 1px solid #2e2e2e;
+  border-radius: 10px;
+  margin: 12px 0;
+  padding: 12px;
+  transition: all 0.2s ease;
+}
+
+.history-card:hover {
+  border-color: #00cfff;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #00cfff;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.history-body {
+  margin-top: 12px;
+  padding-left: 8px;
+}
+
+.history-exercise {
+  margin-bottom: 10px;
+}
+
+.history-exercise h4 {
+  color: #00e0ff;
+  margin-bottom: 6px;
+}
+
+.history-exercise table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.history-exercise th, .history-exercise td {
+  border: 1px solid #333;
+  padding: 6px 8px;
+  text-align: center;
+}
+
+.history-exercise th {
+  color: #00cfff;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: transparent;
+  border: 1px solid #00cfff;
+  color: #00cfff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+  background: rgba(0, 204, 255, 0.15);
+}
+
+.trash-btn {
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.trash-btn:hover {
+  background-color: #d62839;
+  transform: scale(1.05);
+}

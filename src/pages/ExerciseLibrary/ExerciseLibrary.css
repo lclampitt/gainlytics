@@ -1,0 +1,110 @@
+.exercise-library {
+  padding: 2rem;
+  color: #fff;
+  background-color: #0e0f1a;
+  min-height: 100vh;
+}
+
+.library-title {
+  color: #00cfff;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Filter Bar ===== */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-bar input,
+.filter-bar select {
+  background-color: #121222;
+  border: 1px solid #2e2e2e;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+}
+
+.filter-bar input:focus,
+.filter-bar select:focus {
+  outline: none;
+  border-color: #00cfff;
+}
+
+/* ===== Grid ===== */
+/* Desktop: force exactly 3 columns */
+/* Tablets/phones: auto-adjust */
+.exercise-grid {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+@media (min-width: 900px) {
+  .exercise-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.exercise-card {
+  background-color: #141421;
+  border: 1px solid #2e2e2e;
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 204, 255, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exercise-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 204, 255, 0.15);
+}
+
+.exercise-card h3 {
+  color: #00cfff;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.exercise-card p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+}
+
+/* ===== Button ===== */
+.exercise-btn {
+  display: inline-block;
+  margin-top: 0.7rem;
+  border: 1px solid #3a3a3a;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #00cfff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  background: transparent;
+}
+
+.exercise-btn:hover {
+  background-color: rgba(0, 204, 255, 0.1);
+  border-color: #00cfff;
+  color: #00e0ff;
+}
+
+/* ===== No Results ===== */
+.no-results {
+  text-align: center;
+  color: #9aa0a6;
+  font-size: 1rem;
+  grid-column: 1 / -1;
+}

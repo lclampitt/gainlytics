@@ -1,0 +1,80 @@
+/* ===== PAGE CONTAINER ===== */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;   /* 🟢 start near top instead of perfect center */
+  align-items: center;           /* centers horizontally */
+  background-color: #0e0f1a;
+  padding-top: 6rem;             /* 🟢 adjust spacing from top (try 4rem–7rem) */
+}
+
+/* ===== CARD ===== */
+.auth-card {
+  background: #1a1b2e;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 204, 255, 0.08);
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+}
+
+/* ===== TITLE ===== */
+.auth-title {
+  color: #00cfff;
+  font-weight: 700;
+  font-size: 1.7rem;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* ===== INPUTS + BUTTON CENTERED ===== */
+.auth-card input,
+.auth-card button {
+  display: block;
+  margin: 10px auto;
+  width: 80%;
+  max-width: 300px;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+}
+
+/* INPUT STYLING */
+.auth-card input {
+  border: 1px solid #333;
+  background: #111223;
+  color: #fff;
+  transition: border-color 0.2s;
+}
+
+.auth-card input:focus {
+  border-color: #00cfff;
+}
+
+/* BUTTON STYLING */
+.auth-card button {
+  background-color: #00cfff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.auth-card button:hover {
+  background-color: #00b3e0;
+}
+
+/* ===== SWITCH LINK ===== */
+.switch-text {
+  color: #9aa0a6;
+  margin-top: 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.switch-text:hover {
+  color: #00cfff;
+}

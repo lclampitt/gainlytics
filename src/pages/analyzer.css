@@ -1,0 +1,209 @@
+/* ------------------------------ */
+/*   AI Body Analyzer Page Style  */
+/* ------------------------------ */
+
+.analyzer-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.analyzer-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.analyzer-subtext {
+  text-align: center;
+  font-size: 16px;
+  color: #cfcfcf;
+  margin-bottom: 25px;
+}
+
+/* Upload section */
+.upload-box {
+  border: 2px dashed #00cfff;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  background: rgba(0, 204, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+  background: rgba(0, 204, 255, 0.10);
+  border-color: #00e0ff;
+}
+
+.upload-box input[type="file"] {
+  display: none;
+}
+
+.upload-label {
+  cursor: pointer;
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid #00cfff;
+  border-radius: 8px;
+  color: #00cfff;
+  background: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.upload-label:hover {
+  background: rgba(0, 204, 255, 0.1);
+  color: #00e0ff;
+  border-color: #00e0ff;
+}
+
+/* Preview Image */
+.image-preview {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.image-preview img {
+  width: 260px;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+/* Analyze Button */
+.analyze-btn {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 12px 20px;
+  background: #00cfff;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.analyze-btn:hover {
+  background: #00e0ff;
+  transform: scale(1.03);
+}
+
+/* Results Section */
+.analysis-results {
+  margin-top: 40px;
+  padding: 25px;
+  background: #11131a;
+  border-radius: 12px;
+  border: 1px solid #252525;
+}
+
+.result-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.result-item {
+  background: #181a22;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #222;
+}
+
+.result-item strong {
+  color: #00cfff;
+}
+
+/* Body Type Badge */
+.bodytype-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #00cfff;
+  color: #000;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #00cfff;
+}
+
+/* About Section */
+.about-calculator {
+  margin-top: 45px;
+  padding: 25px;
+  background: #11131a;
+  border-radius: 12px;
+  border: 1px solid #1f1f1f;
+}
+
+.about-calculator h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #00cfff;
+}
+
+.about-calculator p {
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* Button Row */
+.button-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+/* Make upload button match analyze button size */
+.upload-label {
+  cursor: pointer;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid #00cfff;
+  color: #00cfff;
+  background: rgba(0, 204, 255, 0.07);
+  font-weight: 600;
+  height: 44px;              /* NEW: matches analyze button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* When hovered */
+.upload-label:hover {
+  background: rgba(0, 204, 255, 0.15);
+  color: #00e0ff;
+  border-color: #00e0ff;
+}
+
+/* Match analyze button height */
+.analyze-btn {
+  padding: 12px 20px;
+  height: 44px;              /* NEW: consistent height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;        /* space between buttons */
+  margin-top: 25px;
+  width: 100%;
+}
