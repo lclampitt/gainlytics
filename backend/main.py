@@ -20,6 +20,10 @@ origins = [
     "http://localhost:5173",
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
+    
+    # production frontend
+    "https://gainlytics.vercel.app",
+    "https://gainlytics.org",
 ]
 
 app.add_middleware(
