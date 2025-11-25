@@ -4,17 +4,17 @@ import './CalculatorsPage.css';
 const calculators = [
   {
     title: 'TDEE Calculator',
-    image: '/images/tdee.png', // replace with your new TDEE image
+    image: '/images/TDEE.png',
     path: '/calculators/tdee',
   },
   {
     title: 'Protein Calculator',
-    image: '/images/protein.png', // replace with your new Protein image
+    image: '/images/Protein.png',
     path: '/calculators/protein',
   },
   {
     title: '1RM Calculator',
-    image: '/images/1rm.png', // replace with your new 1RM image
+    image: '/images/1RM.png',
     path: '/calculators/1rm',
   },
 ];
