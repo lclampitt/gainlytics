@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './analyzer.css';
 
-const API_BASE = 'http://127.0.0.1:9000'; // FastAPI server
+const API_BASE = 'https://gainlytics-1.onrender.com';
 
 export default function Analyzer() {
   const [file, setFile] = useState(null);
