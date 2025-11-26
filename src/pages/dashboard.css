@@ -2,9 +2,9 @@
 .dashboard-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding-bottom: 0;
+  padding-bottom: 40px;
   color: #e8f1ff;
-  padding-top: 60px; 
+  padding-top: 40px; 
 }
 
 /* Header / Hero */
