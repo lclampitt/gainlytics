@@ -2,22 +2,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import ProgressCharts from '../components/ProgressCharts';
-
-const inputStyle = {
-  padding: '8px',
-  backgroundColor: '#111',
-  color: 'white',
-  border: '1px solid #444',
-  borderRadius: 8,
-};
-const btnStyle = {
-  padding: '10px 14px',
-  backgroundColor: '#00cfff',
-  color: 'white',
-  border: 'none',
-  borderRadius: 8,
-  cursor: 'pointer',
-};
+import './progress.css';
 
 export default function ProgressPage() {
   const [session, setSession] = useState(null);
@@ -42,7 +27,9 @@ export default function ProgressPage() {
       setSession(data?.session ?? null);
       setLoading(false);
     })();
-    return () => { mounted = false; };
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -71,7 +58,6 @@ export default function ProgressPage() {
     setMsg('');
     if (!session?.user?.id) return;
 
-    // simple validation
     if (!date) return setError('Please choose a date.');
     const w = weightKg !== '' ? Number(weightKg) : null;
     const b = bfPct !== '' ? Number(bfPct) : null;
@@ -79,7 +65,6 @@ export default function ProgressPage() {
 
     setSaving(true);
 
-    // optimistic insert (unique per date)
     const tempId = `tmp-${Math.random().toString(36).slice(2)}`;
     const optimisticRow = {
       id: tempId,
@@ -89,12 +74,12 @@ export default function ProgressPage() {
       body_fat_pct: b,
       created_at: new Date().toISOString(),
     };
-    // if an entry for this date exists, optimistically replace it
-    const exists = rows.find(r => r.date === date);
+
+    const exists = rows.find((r) => r.date === date);
     if (exists) {
-      setRows(prev => [optimisticRow, ...prev.filter(r => r.date !== date)]);
+      setRows((prev) => [optimisticRow, ...prev.filter((r) => r.date !== date)]);
     } else {
-      setRows(prev => [optimisticRow, ...prev]);
+      setRows((prev) => [optimisticRow, ...prev]);
     }
 
     const { data, error } = await supabase
@@ -113,11 +98,12 @@ export default function ProgressPage() {
 
     if (error) {
       setError(error.message);
-      // rollback optimistic
       await fetchRows();
     } else {
-      // replace temp with real
-      setRows(prev => [data, ...prev.filter(r => r.id !== tempId && r.date !== data.date)]);
+      setRows((prev) => [
+        data,
+        ...prev.filter((r) => r.id !== tempId && r.date !== data.date),
+      ]);
       setMsg('✅ Progress saved.');
       setWeightKg('');
       setBfPct('');
@@ -131,117 +117,140 @@ export default function ProgressPage() {
     setDeletingId(id);
 
     const prev = rows;
-    setRows(rows.filter(r => r.id !== id));
+    setRows(rows.filter((r) => r.id !== id));
 
     const { error } = await supabase.from('progress').delete().eq('id', id);
     if (error) {
       setError(error.message);
-      setRows(prev); // rollback
+      setRows(prev);
     } else {
       setMsg('🗑️ Deleted.');
     }
     setDeletingId(null);
   }
 
+  if (loading) {
+    return (
+      <div className="progress-page">
+        <h2 className="progress-title">Progress</h2>
+        <p style={{ color: '#9aa0a6' }}>Loading...</p>
+      </div>
+    );
+  }
+
   if (!session) {
     return (
-      <div style={{ padding: 24, color: 'white' }}>
-        <h2>Progress</h2>
-        <p style={{ color: '#9aa0a6' }}>Please log in to view and track your progress.</p>
+      <div className="progress-guest">
+        <h2 className="progress-title">Progress</h2>
+        <p>Please log in to view and track your progress.</p>
       </div>
     );
   }
 
   return (
-    <div style={{ maxWidth: 900, margin: '0 auto', padding: 24, color: 'white' }}>
-      <h2 style={{ marginTop: 0 }}>Progress</h2>
+    <div className="progress-page">
+      <h2 className="progress-title">Progress</h2>
 
       {/* Alerts */}
-      {error && <div style={{ marginBottom: 12, color: '#ff8d8d' }}>❌ {error}</div>}
-      {msg && <div style={{ marginBottom: 12, color: '#00ff99' }}>{msg}</div>}
+      {error && (
+        <div className="progress-alert progress-alert--error">❌ {error}</div>
+      )}
+      {msg && (
+        <div className="progress-alert progress-alert--success">{msg}</div>
+      )}
 
       {/* Chart */}
-      <div style={{ marginBottom: 16, padding: 16, border: '1px solid #333', borderRadius: 12, background: '#1a1a1a' }}>
+      <div className="progress-card progress-card--chart">
         <ProgressCharts rows={rows} />
       </div>
 
       {/* Add Entry */}
-      <div style={{ marginBottom: 16, padding: 16, border: '1px solid #333', borderRadius: 12, background: '#1a1a1a' }}>
-        <h3 style={{ marginTop: 0, color: '#00cfff' }}>Add Entry</h3>
-        <form onSubmit={handleAdd} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr auto', gap: 12 }}>
-          <div>
-            <label style={{ display: 'block', marginBottom: 6, color: '#9aa0a6' }}>Date</label>
-            <input type="date" value={date} onChange={e => setDate(e.target.value)} style={inputStyle} />
+      <div className="progress-card">
+        <h3 className="progress-section-title">Add Entry</h3>
+        <form className="progress-form" onSubmit={handleAdd}>
+          <div className="progress-field">
+            <label className="progress-label">Date</label>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="progress-input"
+            />
           </div>
-          <div>
-            <label style={{ display: 'block', marginBottom: 6, color: '#9aa0a6' }}>Weight (kg)</label>
+          <div className="progress-field">
+            <label className="progress-label">Weight (kg)</label>
             <input
               type="number"
               step="0.1"
               value={weightKg}
-              onChange={e => setWeightKg(e.target.value)}
+              onChange={(e) => setWeightKg(e.target.value)}
               placeholder="e.g. 72.4"
-              style={inputStyle}
+              className="progress-input"
             />
           </div>
-          <div>
-            <label style={{ display: 'block', marginBottom: 6, color: '#9aa0a6' }}>Body Fat %</label>
+          <div className="progress-field">
+            <label className="progress-label">Body Fat %</label>
             <input
               type="number"
               step="0.1"
               value={bfPct}
-              onChange={e => setBfPct(e.target.value)}
+              onChange={(e) => setBfPct(e.target.value)}
               placeholder="e.g. 16.8"
-              style={inputStyle}
+              className="progress-input"
             />
           </div>
-          <div style={{ display: 'flex', alignItems: 'end' }}>
-            <button type="submit" disabled={saving} style={btnStyle}>
+          <div className="progress-save-wrapper">
+            <button
+              type="submit"
+              disabled={saving}
+              className="progress-save-btn"
+            >
               {saving ? 'Saving…' : 'Save'}
             </button>
           </div>
         </form>
-        <p style={{ marginTop: 8, color: '#9aa0a6', fontSize: 13 }}>
-          Tip: you can fill just weight, just BF%, or both. Entries are unique per date—new saves will overwrite that day.
+        <p className="progress-tip">
+          Tip: you can fill just weight, just BF%, or both. Entries are unique per
+          date—new saves will overwrite that day.
         </p>
       </div>
 
-      {/* Table */}
-      <div style={{ border: '1px solid #333', borderRadius: 12, background: '#1a1a1a' }}>
-        <div style={{ padding: 16, borderBottom: '1px solid #333' }}>
-          <strong>History</strong>
+      {/* History table */}
+      <div className="progress-card">
+        <div className="progress-card--table-header">
+          <span className="progress-section-title">History</span>
         </div>
+
         {rows.length === 0 ? (
-          <div style={{ padding: 16, color: '#9aa0a6' }}>No entries yet.</div>
+          <div style={{ paddingTop: '0.7rem', color: '#9aa0a6' }}>
+            No entries yet.
+          </div>
         ) : (
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <div className="progress-table-wrapper">
+            <table className="progress-table">
               <thead>
-                <tr style={{ background: '#181818', color: '#9aa0a6' }}>
-                  <th style={th}>Date</th>
-                  <th style={th}>Weight (kg)</th>
-                  <th style={th}>Body Fat %</th>
-                  <th style={th}></th>
+                <tr>
+                  <th className="progress-th">Date</th>
+                  <th className="progress-th">Weight (kg)</th>
+                  <th className="progress-th">Body Fat %</th>
+                  <th className="progress-th" />
                 </tr>
               </thead>
               <tbody>
                 {rows.map((r) => (
-                  <tr key={r.id} style={{ borderTop: '1px solid #292929' }}>
-                    <td style={td}>{r.date}</td>
-                    <td style={td}>{r.weight_kg ?? '—'}</td>
-                    <td style={td}>{r.body_fat_pct ?? '—'}</td>
-                    <td style={{ ...td, textAlign: 'right' }}>
+                  <tr key={r.id} className="progress-row">
+                    <td className="progress-td">{r.date}</td>
+                    <td className="progress-td">
+                      {r.weight_kg ?? '—'}
+                    </td>
+                    <td className="progress-td">
+                      {r.body_fat_pct ?? '—'}
+                    </td>
+                    <td className="progress-td" style={{ textAlign: 'right' }}>
                       <button
                         onClick={() => handleDelete(r.id)}
                         disabled={deletingId === r.id}
-                        style={{
-                          border: '1px solid #444',
-                          background: '#2b2b2b',
-                          color: '#ff8d8d',
-                          padding: '6px 10px',
-                          borderRadius: 8,
-                          cursor: deletingId === r.id ? 'not-allowed' : 'pointer',
-                        }}
+                        className="progress-delete-btn"
                       >
                         {deletingId === r.id ? 'Deleting…' : 'Delete'}
                       </button>
@@ -256,6 +265,3 @@ export default function ProgressPage() {
     </div>
   );
 }
-
-const th = { textAlign: 'left', padding: '10px 12px', fontWeight: 600 };
-const td = { padding: '10px 12px', color: '#ddd' };

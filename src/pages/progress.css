@@ -1,0 +1,251 @@
+/* === Layout === */
+.progress-page {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  color: #e8f1ff;
+}
+
+.progress-title {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00cfff, #00a4ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Alerts */
+.progress-alert {
+  margin-bottom: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.progress-alert--error {
+  background: rgba(255, 77, 94, 0.12);
+  border: 1px solid rgba(255, 118, 133, 0.7);
+  color: #ffd4db;
+  box-shadow: 0 0 18px rgba(255, 77, 94, 0.25);
+}
+
+.progress-alert--success {
+  background: rgba(0, 255, 153, 0.08);
+  border: 1px solid rgba(0, 255, 153, 0.7);
+  color: #c5ffe6;
+  box-shadow: 0 0 18px rgba(0, 255, 153, 0.25);
+}
+
+/* === Reusable card styling === */
+.progress-card {
+  margin-bottom: 1.4rem;
+  padding: 1.4rem 1.25rem;
+
+  border-radius: 20px;
+  border: 1px solid rgba(0, 207, 255, 0.25);
+
+  /* lighter gradient */
+  background: radial-gradient(
+      circle at top left,
+      #1d2538 0,
+      #151a2a 48%,
+      #0d101a 100%
+    );
+
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(0, 207, 255, 0.05);
+}
+
+.progress-card--chart {
+  padding: 1.2rem 1.1rem 1.4rem;
+  /* slightly brighter for the chart block */
+  background: radial-gradient(
+      circle at top left,
+      #222b3f 0,
+      #161b2b 55%,
+      #101420 100%
+    );
+}
+
+/* Section titles */
+.progress-section-title {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #00cfff;
+}
+
+/* === Add Entry form === */
+.progress-form {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.progress-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  color: #b7c3d9;
+}
+
+.progress-input {
+  padding: 0.55rem 0.75rem;
+  border-radius: 9px;
+  border: 1px solid #343b54;
+  background-color: #15192a;
+  color: #e8f1ff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.progress-input::placeholder {
+  color: #6c7690;
+}
+
+.progress-input:focus {
+  border-color: #00cfff;
+  box-shadow: 0 0 0 1px rgba(0, 207, 255, 0.45);
+  background-color: #171d32;
+}
+
+.progress-save-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.progress-save-btn {
+  padding: 0.6rem 1.1rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #00cfff, #00ffbf);
+  color: #050711;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.progress-save-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(0, 207, 255, 0.7);
+  filter: brightness(1.05);
+}
+
+.progress-save-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.78;
+}
+
+.progress-tip {
+  margin-top: 0.55rem;
+  font-size: 0.82rem;
+  color: #9faac4;
+}
+
+/* === History table === */
+.progress-card--table-header {
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(45, 55, 82, 0.85);
+  margin-bottom: 0.2rem;
+}
+
+.progress-table-wrapper {
+  overflow-x: auto;
+}
+
+.progress-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.progress-th,
+.progress-td {
+  padding: 0.65rem 0.8rem;
+  text-align: left;
+}
+
+.progress-th {
+  font-weight: 600;
+  background: #181e30;
+  color: #a4afc5;
+}
+
+.progress-row {
+  border-top: 1px solid #283047;
+}
+
+.progress-td {
+  color: #e1e7f5;
+}
+
+/* Delete button */
+.progress-delete-btn {
+  border-radius: 999px;
+  border: 1px solid #4e5670;
+  background: #232842;
+  color: #ff9da3;
+  padding: 0.32rem 0.85rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease,
+    box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.progress-delete-btn:hover:not(:disabled) {
+  background: #ff6b6b;
+  color: #050711;
+  border-color: #ffb0b0;
+  box-shadow: 0 0 18px rgba(255, 107, 107, 0.6);
+  transform: translateY(-1px);
+}
+
+.progress-delete-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* Guest state (not logged in) */
+.progress-guest {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  color: #e8f1ff;
+}
+.progress-guest p {
+  color: #a3aec6;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .progress-page {
+    padding: 2.2rem 1.1rem 2.5rem;
+  }
+
+  .progress-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .progress-form {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-save-wrapper {
+    justify-content: flex-start;
+  }
+}

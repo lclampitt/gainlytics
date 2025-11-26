@@ -5,6 +5,7 @@ import { supabase } from './supabaseClient';
 
 // Components
 import Header from './components/header';
+import Footer from './components/footer';
 import AuthForm from './components/AuthForm';
 import GoalPlanner from './components/GoalPlanner/goalplanner';
 
@@ -127,6 +128,7 @@ function App() {
           />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }

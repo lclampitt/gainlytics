@@ -1,38 +1,60 @@
+/* ===========================
+   Goal Planner – Page Layout
+   =========================== */
+
 .goalplanner-container {
-  padding: 20px;
-  color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px 40px;
+  color: #e8f1ff;
 }
 
+/* Header (full page) */
 .goalplanner-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  margin-bottom: 18px;
 }
 
+.goalplanner-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #e8f1ff;
+}
+
+/* Edit / Add button */
 .goalplanner-toggle {
-  margin-left: 8px;
-  padding: 8px 12px;
-  background-color: #333;
-  color: white;
-  border: 1px solid #666;
-  border-radius: 6px;
+  padding: 8px 16px;
+  background: rgba(0, 207, 255, 0.09);
+  color: #00cfff;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 207, 255, 0.5);
   cursor: pointer;
-  transition: 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.18s ease, color 0.18s ease,
+    box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
 }
 
 .goalplanner-toggle:hover {
-  background-color: #00cfff;
-  color: black;
+  background: #00cfff;
+  color: #050811;
+  border-color: #00e0ff;
+  box-shadow: 0 0 16px rgba(0, 207, 255, 0.55);
+  transform: translateY(-1px);
 }
 
+/* Messages */
 .goalplanner-loading {
-  color: #aaa;
+  color: #9aa0a6;
 }
 
 .goalplanner-error {
   margin-top: 10px;
-  color: #ff6b6b;
+  color: #ff8d8d;
 }
 
 .goalplanner-message {
@@ -44,18 +66,52 @@
   color: #00ff99;
 }
 
-/* ===== FORM ===== */
+/* ===========================
+   Card Base (view + form)
+   =========================== */
+
+.goalplanner-view,
 .goalplanner-form {
-  margin-top: 16px;
-  padding: 16px;
-  background-color: #1a1b2e;
-  border-radius: 10px;
-  border: 1px solid #333;
+  position: relative;
+  margin-top: 18px;
+  padding: 18px 20px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 207, 255, 0.22);
+  background: radial-gradient(
+      circle at top left,
+      #1d2538 0,
+      #151a2a 50%,
+      #0e111a 100%
+    );
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.6),
+    0 0 22px rgba(0, 207, 255, 0.06);
 }
+
+/* ===========================
+   View Mode
+   =========================== */
+
+.goalplanner-view h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #00cfff;
+  font-size: 1.1rem;
+}
+
+.goalplanner-view p {
+  margin: 4px 0;
+  color: #ccd6e5;
+}
+
+/* ===========================
+   Form
+   =========================== */
 
 .goalplanner-form h3 {
   color: #00cfff;
   margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .goalplanner-goal-options {
@@ -66,16 +122,21 @@
   margin-right: 6px;
   margin-bottom: 6px;
   padding: 6px 12px;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 6px;
+  background-color: #222535;
+  color: #e8f1ff;
+  border: 1px solid #3b4258;
+  border-radius: 999px;
   cursor: pointer;
+  font-size: 0.88rem;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease,
+    transform 0.16s ease;
 }
 
 .goalplanner-option.selected {
-  background-color: #00cfff;
-  color: black;
+  background: linear-gradient(135deg, #00cfff, #00ffbf);
+  color: #050811;
+  border-color: #00e0ff;
+  transform: translateY(-1px);
 }
 
 .goalplanner-input-group {
@@ -87,32 +148,38 @@
   text-transform: capitalize;
   width: 90px;
   display: inline-block;
+  color: #cfd7e6;
+  font-size: 0.9rem;
 }
 
 .goalplanner-input-group input {
-  width: 120px;
-  padding: 6px;
-  background-color: #111;
-  color: white;
-  border: 1px solid #555;
-  border-radius: 6px;
+  width: 140px;
+  padding: 6px 8px;
+  background-color: #090b12;
+  color: #e8f1ff;
+  border: 1px solid #444b63;
+  border-radius: 8px;
+  font-size: 0.9rem;
 }
 
 .goalplanner-input-group span {
   margin-left: 8px;
-  color: #888;
+  color: #7e879e;
+  font-size: 0.85rem;
 }
 
 .goalplanner-timeframe {
-  width: 120px;
-  padding: 6px;
-  background-color: #111;
-  color: white;
-  border: 1px solid #555;
-  border-radius: 6px;
+  width: 140px;
+  padding: 6px 8px;
+  background-color: #090b12;
+  color: #e8f1ff;
+  border: 1px solid #444b63;
+  border-radius: 8px;
+  font-size: 0.9rem;
 }
 
 /* ===== ACTION BUTTONS ===== */
+
 .goalplanner-actions {
   margin-top: 16px;
   display: flex;
@@ -123,38 +190,49 @@
 
 .goalplanner-actions .save {
   padding: 10px 16px;
-  background-color: #00cfff;
-  color: white;
+  background: linear-gradient(135deg, #00cfff, #00ffbf);
+  color: #050811;
   border: none;
-  border-radius: 8px;
+  border-radius: 999px;
   cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
+}
+
+.goalplanner-actions .save:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 0 16px rgba(0, 207, 255, 0.6);
 }
 
 .goalplanner-actions .save:disabled {
-  background-color: #2a8db0;
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
 .goalplanner-actions .delete {
   padding: 10px 16px;
-  background-color: #2b2b2b;
+  background-color: #22252f;
   color: #ff8d8d;
-  border: 1px solid #444;
-  border-radius: 8px;
+  border: 1px solid #444b63;
+  border-radius: 999px;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 /* ===== CONFIRM DELETE ===== */
+
 .goalplanner-confirm {
   margin-top: 12px;
-  padding: 12px;
+  padding: 12px 14px;
   background-color: #241d1d;
   border: 1px solid #5a2c2c;
-  border-radius: 8px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  font-size: 0.9rem;
 }
 
 .goalplanner-confirm .confirm-yes {
@@ -162,41 +240,38 @@
   background-color: #c93030;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 999px;
   cursor: pointer;
 }
 
 .goalplanner-confirm .confirm-cancel {
   padding: 8px 12px;
-  background-color: #333;
+  background-color: #333645;
   color: white;
-  border: 1px solid #555;
-  border-radius: 6px;
+  border: 1px solid #555d75;
+  border-radius: 999px;
   cursor: pointer;
 }
 
-/* ===== VIEW MODE ===== */
-.goalplanner-view {
-  margin-top: 20px;
-  padding: 16px;
-  background-color: #1a1b2e;
-  border-radius: 8px;
-  border: 1px solid #2e2e2e;
-  box-shadow: 0 0 15px rgba(0, 204, 255, 0.08);
+/* ===========================
+   Compact Mode (Dashboard)
+   =========================== */
+
+.goalplanner-container.compact {
+  padding: 0;
+  color: inherit;
 }
 
-.goalplanner-view h3 {
-  margin-top: 0;
-  color: #00cfff;
+.goalplanner-container.compact .goalplanner-header {
+  display: none;
 }
 
-/* ===== Compact Mode (Dashboard) ===== */
 .goalplanner-container.compact .goalplanner-view {
-  background-color: transparent;
+  background: transparent;
   border: none;
   box-shadow: none;
   padding: 0;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .goalplanner-container.compact .goalplanner-view h3 {
@@ -209,6 +284,8 @@
   font-size: 0.9rem;
 }
 
-.goalplanner-container.compact .goalplanner-header {
-  display: none;
+.goalplanner-container.compact .goalplanner-form {
+  /* If we ever show the form inside the dashboard card,
+     keep it simpler and flatter */
+  border-radius: 12px;
 }

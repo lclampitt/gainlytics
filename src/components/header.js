@@ -1,4 +1,4 @@
-// src/components/header.jsx
+// src/components/header.js
 import { Link, useLocation } from 'react-router-dom';
 import './header.css';
 
@@ -15,31 +15,47 @@ export default function Header({ onLogout, session }) {
 
   return (
     <header className="header">
-      <div className="header-logo">
-        <h1>Gainlytics</h1>
-      </div>
+      <div className="header-inner">
 
-      <nav className="header-nav">
-        <ul>
-          {navLinks.map((link) => (
-            <li key={link.path}>
-              <Link
-                to={link.path}
-                className={location.pathname === link.path ? 'active' : ''}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-          {session && (
-            <li>
-              <button onClick={onLogout} className="logout-btn">
-                Sign Out
-              </button>
-            </li>
-          )}
-        </ul>
-      </nav>
+        {/* Brand Section */}
+        <Link to="/" className="header-brand">
+          <div className="header-logo-wrapper">
+            <img
+              src="/images/gainlytics-logo.png"
+              alt="Gainlytics Logo"
+              className="header-logo-img"
+            />
+          </div>
+          <span className="header-logo-text">Gainlytics</span>
+        </Link>
+
+        {/* Navigation Links */}
+        <nav className="header-nav">
+          <ul>
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <Link
+                  to={link.path}
+                  className={
+                    location.pathname === link.path ? 'nav-link active' : 'nav-link'
+                  }
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+
+            {/* Logout Button */}
+            {session && (
+              <li>
+                <button onClick={onLogout} className="logout-btn">
+                  Sign Out
+                </button>
+              </li>
+            )}
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 }

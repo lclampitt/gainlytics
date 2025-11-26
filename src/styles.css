@@ -1,64 +1,115 @@
-/* Global styles */
+/* ===========================
+   Global base styles
+   =========================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #0e0f1a;
-  color: #fff;
-}
-
-/* Header styles */
-.header {
-  background-color: #2a2a40;
-  color: #00bfff;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Title/logo styling */
-.header h1 {
-  margin: 0;
-  font-size: 1.6rem;
-  color: #00bfff;
-}
-
-/* Navigation links */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
   padding: 0;
-  align-items: center;
+  height: 100%;
 }
 
-/* Individual nav item */
-.nav-link {
-  color: #00bfff;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 6px 12px;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background:
+    radial-gradient(circle at top left, #15192a 0, #050711 55%),
+    #050711;
+  color: #e8f1ff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-.nav-link:hover {
-  background-color: #1f2937; /* Slightly lighter gray */
-  color: white;
-}
-
-/* Page layout */
+/* Main app content wrapper (optional – if you have a top-level <main>) */
 main {
-  padding: 2rem;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, #15192a 0%, #050711 55%),
+    #050711 !important;
 }
 
-/* Headings */
+/* ===========================
+   Typography
+   =========================== */
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  margin-top: 0;
+}
+
 h1 {
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 h2 {
-  margin-top: 1rem;
-  color: #00bfff;
+  font-size: 1.5rem;
+}
+
+a {
+  color: #00cfff;
+  text-decoration: none;
+}
+
+/* Muted helper text */
+.text-muted {
+  color: #9aa0a6;
+  font-size: 0.9rem;
+}
+
+/* ===========================
+   Buttons (generic)
+   =========================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease, transform 0.18s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #00cfff, #00ffbf);
+  color: #050711;
+  border-color: #00e0ff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 18px rgba(0, 207, 255, 0.6);
+}
+
+/* ===========================
+   Scrollbar (WebKit)
+   =========================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050711;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27314a;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #364261;
 }
