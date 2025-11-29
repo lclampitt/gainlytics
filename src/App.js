@@ -13,8 +13,8 @@ import Analyzer from './pages/analyzer';
 import Calculators from './pages/calculators';
 import ProgressPage from './pages/progress';
 import AuthPage from './pages/auth';
-import Contact from './pages/Contact';
-import About from './pages/About';
+import Contact from './pages/contact';
+import About from './pages/about';
 
 // Features / sub-pages
 import GoalPlanner from './components/GoalPlanner/goalplanner';
