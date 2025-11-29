@@ -3,11 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { supabase } from './supabaseClient';
 
-// Components
+// Layout
 import Header from './components/header';
 import Footer from './components/footer';
-import AuthForm from './components/AuthForm';
-import GoalPlanner from './components/GoalPlanner/goalplanner';
 
 // Pages
 import Dashboard from './pages/dashboard';
@@ -15,6 +13,11 @@ import Analyzer from './pages/analyzer';
 import Calculators from './pages/calculators';
 import ProgressPage from './pages/progress';
 import AuthPage from './pages/auth';
+import Contact from './pages/Contact';
+import About from './pages/About';
+
+// Features / sub-pages
+import GoalPlanner from './components/GoalPlanner/goalplanner';
 
 // Calculators
 import TdeeCalculator from './calculators/TdeeCalculator';
@@ -43,14 +46,16 @@ function ProtectedRoute({ session, loading, children }) {
       </div>
     );
   }
+
   if (!session) return <Navigate to="/auth" replace />;
+
   return children;
 }
 
 function App() {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isRegistering, setIsRegistering] = useState(false);
+  const [, setIsRegistering] = useState(false); // kept in case you use later
   const navigate = useNavigate();
 
   // Load session once on mount
@@ -83,30 +88,31 @@ function App() {
       <Header onLogout={handleLogout} session={session} />
       <main>
         <Routes>
-          {/* Public */}
+          {/* Public routes */}
           <Route path="/auth" element={<AuthPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/help" element={<Contact />} />
           <Route path="/calculators" element={<Calculators />} />
           <Route path="/calculators/tdee" element={<TdeeCalculator />} />
           <Route path="/calculators/protein" element={<ProteinCalculator />} />
           <Route path="/calculators/1rm" element={<OneRepMaxCalculator />} />
           <Route path="/exercises" element={<ExerciseLibrary />} />
           <Route path="/exercises/:id" element={<ExerciseDetails />} />
-          <Route path="/workouts" element={<WorkoutLogger />} />
 
-          {/* Protected */}
-          <Route
-            path="/analyzer"
-            element={
-              <ProtectedRoute session={session} loading={loading}>
-                <Analyzer />
-              </ProtectedRoute>
-            }
-          />
+          {/* Protected routes */}
           <Route
             path="/"
             element={
               <ProtectedRoute session={session} loading={loading}>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/analyzer"
+            element={
+              <ProtectedRoute session={session} loading={loading}>
+                <Analyzer />
               </ProtectedRoute>
             }
           />
@@ -123,6 +129,14 @@ function App() {
             element={
               <ProtectedRoute session={session} loading={loading}>
                 <ProgressPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/workouts"
+            element={
+              <ProtectedRoute session={session} loading={loading}>
+                <WorkoutLogger />
               </ProtectedRoute>
             }
           />

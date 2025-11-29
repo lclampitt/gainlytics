@@ -16,7 +16,7 @@ export default function ProgressPage() {
   // form
   const today = useMemo(() => new Date().toISOString().slice(0, 10), []);
   const [date, setDate] = useState(today);
-  const [weightKg, setWeightKg] = useState('');
+  const [weightLbs, setWeightLbs] = useState('');
   const [bfPct, setBfPct] = useState('');
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function ProgressPage() {
     if (!session?.user?.id) return;
 
     if (!date) return setError('Please choose a date.');
-    const w = weightKg !== '' ? Number(weightKg) : null;
+    const w = weightLbs !== '' ? Number(weightLbs) : null;
     const b = bfPct !== '' ? Number(bfPct) : null;
     if (w === null && b === null) return setError('Enter weight and/or BF%.');
 
@@ -70,6 +70,7 @@ export default function ProgressPage() {
       id: tempId,
       user_id: session.user.id,
       date,
+      // still stored in the weight_kg column, but interpreted as lbs
       weight_kg: w,
       body_fat_pct: b,
       created_at: new Date().toISOString(),
@@ -88,7 +89,7 @@ export default function ProgressPage() {
         {
           user_id: session.user.id,
           date,
-          weight_kg: w,
+          weight_kg: w,       // column name unchanged
           body_fat_pct: b,
         },
         { onConflict: ['user_id', 'date'] }
@@ -105,7 +106,7 @@ export default function ProgressPage() {
         ...prev.filter((r) => r.id !== tempId && r.date !== data.date),
       ]);
       setMsg('✅ Progress saved.');
-      setWeightKg('');
+      setWeightLbs('');
       setBfPct('');
     }
     setSaving(false);
@@ -178,13 +179,13 @@ export default function ProgressPage() {
             />
           </div>
           <div className="progress-field">
-            <label className="progress-label">Weight (kg)</label>
+            <label className="progress-label">Weight (lbs)</label>
             <input
               type="number"
               step="0.1"
-              value={weightKg}
-              onChange={(e) => setWeightKg(e.target.value)}
-              placeholder="e.g. 72.4"
+              value={weightLbs}
+              onChange={(e) => setWeightLbs(e.target.value)}
+              placeholder="e.g. 180"
               className="progress-input"
             />
           </div>
@@ -231,7 +232,7 @@ export default function ProgressPage() {
               <thead>
                 <tr>
                   <th className="progress-th">Date</th>
-                  <th className="progress-th">Weight (kg)</th>
+                  <th className="progress-th">Weight (lbs)</th>
                   <th className="progress-th">Body Fat %</th>
                   <th className="progress-th" />
                 </tr>

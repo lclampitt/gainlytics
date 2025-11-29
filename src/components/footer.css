@@ -135,3 +135,15 @@
     align-items: flex-start;
   }
 }
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 30px;
+}
+
+.footer-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

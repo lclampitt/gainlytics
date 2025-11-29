@@ -1,34 +1,60 @@
+/* ===== Page container (matches dashboard sizing) ===== */
 .workout-logger {
-  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
   color: #fff;
-  background-color: #0e0f1a;
-  min-height: 100vh;
+}
+
+/* Header row */
+.workout-header-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
 .workout-title {
   color: #00cfff;
   font-size: 2rem;
   text-align: center;
+  margin-bottom: 4px;
 }
 
 .workout-subtext {
   color: #9aa0a6;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin: 0;
+}
+
+/* ===== Main card (builder) ===== */
+.workout-card {
+  background: #121212;
+  border: 1px solid #2e2e2e;
+  border-radius: 16px;
+  padding: 18px 18px 22px;
+  margin-top: 18px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
 }
 
 /* Header section (date + name) */
 .workout-header {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
-.workout-header label {
+.workout-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.workout-field label {
   font-weight: 600;
-  margin-right: 0.5rem;
+  font-size: 0.9rem;
+  color: #c3c7d9;
 }
 
 .workout-header input {
@@ -37,18 +63,23 @@
   color: #fff;
   padding: 8px 10px;
   border-radius: 8px;
+  min-width: 180px;
+}
+
+.workout-name-field {
+  flex: 1;
 }
 
 /* Add exercise bar */
 .exercise-adder {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 
 .exercise-adder input {
-  width: 260px;
+  flex: 1;
   background: #121222;
   border: 1px solid #2e2e2e;
   color: #fff;
@@ -63,12 +94,13 @@
   padding: 8px 16px;
   font-weight: 600;
   cursor: pointer;
-  color: #fff;
-  transition: background-color 0.2s;
+  color: #000;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .exercise-adder button:hover {
-  background-color: #00b3e0;
+  background-color: #00e0ff;
+  transform: translateY(-1px);
 }
 
 /* Each exercise block */
@@ -96,6 +128,7 @@
   width: 100%;
   margin-top: 0.5rem;
   border-collapse: collapse;
+  font-size: 0.9rem;
 }
 
 .sets-table th,
@@ -119,8 +152,9 @@
   padding: 4px;
 }
 
+/* Buttons */
 .add-set-btn {
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
   background: transparent;
   border: 1px solid #00cfff;
   color: #00cfff;
@@ -128,6 +162,7 @@
   padding: 6px 12px;
   cursor: pointer;
   transition: all 0.2s;
+  font-size: 0.85rem;
 }
 
 .add-set-btn:hover {
@@ -136,87 +171,45 @@
 
 .save-btn {
   display: block;
-  margin: 1.5rem auto;
+  margin: 1.5rem auto 0.5rem;
   background-color: #00cfff;
-  color: #fff;
+  color: #000;
   border: none;
   border-radius: 10px;
-  padding: 10px 20px;
+  padding: 10px 24px;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .save-btn:hover {
-  background-color: #00b3e0;
+  background-color: #00e0ff;
+  transform: translateY(-1px);
 }
 
 .workout-message {
   text-align: center;
   color: #00ff99;
   font-weight: 600;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
-/* ==== Workout History Section ==== */
-.history-title {
-  color: #00cfff;
-  margin-top: 40px;
-  text-align: center;
-}
-
-.history-card {
-  background-color: #11121b;
-  border: 1px solid #2e2e2e;
-  border-radius: 10px;
-  margin: 12px 0;
-  padding: 12px;
-  transition: all 0.2s ease;
-}
-
-.history-card:hover {
-  border-color: #00cfff;
-}
-
-.history-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #00cfff;
-  font-weight: 600;
+/* Trash / edit buttons */
+.trash-btn {
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
   cursor: pointer;
-  user-select: none;
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: all 0.2s ease-in-out;
 }
 
-.history-body {
-  margin-top: 12px;
-  padding-left: 8px;
-}
-
-.history-exercise {
-  margin-bottom: 10px;
-}
-
-.history-exercise h4 {
-  color: #00e0ff;
-  margin-bottom: 6px;
-}
-
-.history-exercise table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-
-.history-exercise th, .history-exercise td {
-  border: 1px solid #333;
-  padding: 6px 8px;
-  text-align: center;
-}
-
-.history-exercise th {
-  color: #00cfff;
-  font-weight: 600;
+.trash-btn:hover {
+  background-color: #d62839;
+  transform: scale(1.05);
 }
 
 .edit-btn {
@@ -235,18 +228,107 @@
   background: rgba(0, 204, 255, 0.15);
 }
 
-.trash-btn {
-  background-color: #e63946;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 4px 10px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease-in-out;
+/* ===== Workout history ===== */
+.workout-history-section {
+  margin-top: 10px;
 }
 
-.trash-btn:hover {
-  background-color: #d62839;
-  transform: scale(1.05);
+.history-title {
+  color: #00cfff;
+  margin: 8px 0 12px;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.history-card {
+  background-color: #11121b;
+  border: 1px solid #2e2e2e;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 10px 12px;
+  transition: all 0.2s ease;
+}
+
+.history-card:hover {
+  border-color: #00cfff;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #c7d0e5;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+}
+
+.history-header-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-date-icon {
+  font-size: 1rem;
+}
+
+.history-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chevron {
+  font-size: 0.8rem;
+  color: #9aa0a6;
+}
+
+.history-body {
+  margin-top: 12px;
+  padding-left: 4px;
+}
+
+.history-exercise {
+  margin-bottom: 10px;
+}
+
+.history-exercise h4 {
+  color: #00e0ff;
+  margin-bottom: 6px;
+}
+
+.history-exercise table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.history-exercise th,
+.history-exercise td {
+  border: 1px solid #333;
+  padding: 5px 6px;
+  text-align: center;
+}
+
+.history-exercise th {
+  color: #00cfff;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .workout-header {
+    flex-direction: column;
+  }
+
+  .exercise-adder {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .exercise-adder button {
+    width: 100%;
+    text-align: center;
+  }
 }

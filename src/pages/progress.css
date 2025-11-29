@@ -249,3 +249,26 @@
     justify-content: flex-start;
   }
 }
+
+/* ===== Recharts tooltip theming for Progress chart ===== */
+.recharts-default-tooltip {
+  background-color: #101420 !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(148, 163, 184, 0.7) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  padding: 8px 10px !important;
+}
+
+/* Date label at the top of the tooltip */
+.recharts-tooltip-label {
+  margin-bottom: 4px;
+  font-size: 0.8rem;
+  color: #9ca3af !important;
+}
+
+/* Individual value rows */
+.recharts-tooltip-item {
+  font-size: 0.85rem;
+  color: #e5edf7 !important; /* or #00cfff if you want it cyan */
+}
+

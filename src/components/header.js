@@ -10,6 +10,7 @@ export default function Header({ onLogout, session }) {
     { label: 'Analyzer', path: '/analyzer' },
     { label: 'Calculators', path: '/calculators' },
     { label: 'Goal Planner', path: '/goalplanner' },
+    { label: 'Workouts', path: '/workouts' },   // ⭐ ADDED HERE
     { label: 'Progress', path: '/progress' },
   ];
 

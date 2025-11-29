@@ -20,15 +20,23 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick links */}
+        {/* App links (2 columns) */}
         <div className="footer-column footer-links">
           <div className="footer-column-title">App</div>
-          <div className="footer-links-list">
-            <Link to="/" className="footer-link">Home</Link>
-            <Link to="/analyzer" className="footer-link">Analyzer</Link>
-            <Link to="/calculators" className="footer-link">Calculators</Link>
-            <Link to="/goalplanner" className="footer-link">Goal Planner</Link>
-            <Link to="/progress" className="footer-link">Progress</Link>
+
+          <div className="footer-links-grid">
+            <div className="footer-links-list">
+              <Link to="/" className="footer-link">Home</Link>
+              <Link to="/analyzer" className="footer-link">Analyzer</Link>
+              <Link to="/calculators" className="footer-link">Calculators</Link>
+            </div>
+
+            <div className="footer-links-list">
+              <Link to="/goalplanner" className="footer-link">Goal Planner</Link>
+              <Link to="/progress" className="footer-link">Progress</Link>
+              <Link to="/help" className="footer-link">Contact Us</Link>
+              <Link to="/about" className="footer-link">About Us</Link>
+            </div>
           </div>
         </div>
 
@@ -43,6 +51,7 @@ export default function Footer() {
             Questions? <a href="mailto:support@gainlytics.org">support@gainlytics.org</a>
           </p>
         </div>
+
       </div>
 
       <div className="footer-bottom">

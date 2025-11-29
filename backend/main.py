@@ -203,7 +203,7 @@ def interpretation_and_plan(bodyfat: float) -> tuple[str, str, int, list[str]]:
         goal = "Maintenance or lean bulk"
         cals = 2600
         notes = [
-            "You’re already quite lean—focus on performance and strength.",
+            "You’re already quite lean. Focus on performance and strength.",
             "A small surplus or maintenance calories can help build muscle.",
             "Keep protein high (0.8–1.0 g per lb of body weight).",
         ]
@@ -212,7 +212,7 @@ def interpretation_and_plan(bodyfat: float) -> tuple[str, str, int, list[str]]:
         goal = "Mild cut or recomposition"
         cals = 2300
         notes = [
-            "You’re in a good spot—decide if you want more definition or muscle.",
+            "You’re in a good spot. Decide if you want more definition or muscle.",
             "A small deficit with 3–4 days of lifting works well.",
             "Aim for 7–9k steps per day to support fat loss.",
         ]
@@ -230,7 +230,7 @@ def interpretation_and_plan(bodyfat: float) -> tuple[str, str, int, list[str]]:
         goal = "Gradual fat loss"
         cals = 1900
         notes = [
-            "Start with simple, sustainable changes—no crash diets.",
+            "Start with simple, sustainable changes. No crash diets.",
             "Prioritize walking and light activity to build habits.",
             "Talk with a healthcare provider before aggressive dieting or training.",
         ]
