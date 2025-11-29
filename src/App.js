@@ -14,7 +14,7 @@ import Calculators from './pages/calculators';
 import ProgressPage from './pages/progress';
 import AuthPage from './pages/auth';
 import Contact from './pages/Contact';
-import About from './pages/about';
+import About from './pages/About';
 
 // Features / sub-pages
 import GoalPlanner from './components/GoalPlanner/goalplanner';
