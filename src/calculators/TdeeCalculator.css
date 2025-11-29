@@ -1,3 +1,18 @@
+/* ===== PAGE WRAPPER ===== */
+.deficit-calculator {
+  max-width: 1100px;      /* keeps it from spanning the whole screen */
+  margin: 0 auto;         /* center on the page */
+  padding: 40px 20px 60px; /* top / sides / bottom padding */
+  color: #e7f5ff;
+}
+
+/* Title spacing */
+.deficit-calculator h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
 /* ===== BUTTON GROUPS (Units, Gender, Age Range) ===== */
 .inputs button {
   padding: 8px 14px;

@@ -25,6 +25,7 @@ export default function GoalPlanner({ compact = false }) {
   // --------------------------------------
   useEffect(() => {
     let mounted = true;
+
     (async () => {
       setLoading(true);
       setError('');
@@ -53,6 +54,7 @@ export default function GoalPlanner({ compact = false }) {
       if (error && error.code !== 'PGRST116') {
         setError('Could not fetch your goal.');
       } else if (data) {
+        // Existing goal found → populate + start in view mode
         setRowId(data.id ?? null);
         setGoal(data.goal ?? '');
         setMacros({
@@ -62,7 +64,12 @@ export default function GoalPlanner({ compact = false }) {
           fat: Number(data.fat) || 0,
         });
         setTimeframe(Number(data.timeframe_weeks) || 0);
+        setEditing(false);
+      } else {
+        // No goal yet → start in editing mode so user sees the form
+        setEditing(true);
       }
+
       setLoading(false);
     })();
 
@@ -71,7 +78,10 @@ export default function GoalPlanner({ compact = false }) {
     };
   }, []);
 
-  const hasGoal = useMemo(() => !!goal && timeframe > 0 && macros.calories > 0, [goal, timeframe, macros]);
+  const hasGoal = useMemo(
+    () => !!goal && timeframe > 0 && macros.calories > 0,
+    [goal, timeframe, macros]
+  );
 
   // --------------------------------------
   // SAVE / UPSERT
@@ -107,7 +117,7 @@ export default function GoalPlanner({ compact = false }) {
     } else {
       setRowId(data?.id ?? rowId);
       setMessage('✅ Goal saved successfully!');
-      setEditing(false);
+      setEditing(false); // switch to view mode after save
     }
 
     setSaving(false);
@@ -135,7 +145,7 @@ export default function GoalPlanner({ compact = false }) {
       setMacros(emptyMacros);
       setTimeframe(0);
       setMessage('🗑️ Goal deleted.');
-      setEditing(true);
+      setEditing(true); // back to blank form after delete
     }
     setDeleting(false);
     setConfirmDelete(false);
@@ -163,12 +173,17 @@ export default function GoalPlanner({ compact = false }) {
       {loading && <p className="goalplanner-loading">Loading…</p>}
       {!loading && error && <p className="goalplanner-error">{error}</p>}
       {!loading && message && (
-        <p className={`goalplanner-message ${message.startsWith('✅') ? 'success' : ''}`}>
+        <p
+          className={`goalplanner-message ${
+            message.startsWith('✅') ? 'success' : ''
+          }`}
+        >
           {message}
         </p>
       )}
 
-      {!loading && (editing || !hasGoal) && (
+      {/* EDIT / CREATE FORM */}
+      {!loading && editing && (
         <div className="goalplanner-form">
           <h3>{rowId ? 'Edit Goal' : 'Create Goal'}</h3>
 
@@ -177,7 +192,9 @@ export default function GoalPlanner({ compact = false }) {
               <button
                 key={g}
                 onClick={() => setGoal(g)}
-                className={`goalplanner-option ${goal === g ? 'selected' : ''}`}
+                className={`goalplanner-option ${
+                  goal === g ? 'selected' : ''
+                }`}
               >
                 {g}
               </button>
@@ -192,7 +209,10 @@ export default function GoalPlanner({ compact = false }) {
                 type="number"
                 value={macros[m]}
                 onChange={(e) =>
-                  setMacros({ ...macros, [m]: parseInt(e.target.value, 10) || 0 })
+                  setMacros({
+                    ...macros,
+                    [m]: parseInt(e.target.value, 10) || 0,
+                  })
                 }
               />
               <span>{m === 'calories' ? 'kcal/day' : 'g/day'}</span>
@@ -203,16 +223,26 @@ export default function GoalPlanner({ compact = false }) {
           <input
             type="number"
             value={timeframe}
-            onChange={(e) => setTimeframe(parseInt(e.target.value, 10) || 0)}
+            onChange={(e) =>
+              setTimeframe(parseInt(e.target.value, 10) || 0)
+            }
             className="goalplanner-timeframe"
           />
 
           <div className="goalplanner-actions">
-            <button onClick={handleSave} disabled={saving} className="save">
+            <button
+              onClick={handleSave}
+              disabled={saving}
+              className="save"
+            >
               {saving ? 'Saving…' : 'Save Goal'}
             </button>
             {rowId && (
-              <button onClick={() => setConfirmDelete(true)} disabled={deleting} className="delete">
+              <button
+                onClick={() => setConfirmDelete(true)}
+                disabled={deleting}
+                className="delete"
+              >
                 {deleting ? 'Deleting…' : 'Delete Goal'}
               </button>
             )}
@@ -222,10 +252,17 @@ export default function GoalPlanner({ compact = false }) {
             <div className="goalplanner-confirm">
               <span>Delete your current goal permanently?</span>
               <div>
-                <button onClick={handleDelete} disabled={deleting} className="confirm-yes">
+                <button
+                  onClick={handleDelete}
+                  disabled={deleting}
+                  className="confirm-yes"
+                >
                   Yes, delete
                 </button>
-                <button onClick={() => setConfirmDelete(false)} className="confirm-cancel">
+                <button
+                  onClick={() => setConfirmDelete(false)}
+                  className="confirm-cancel"
+                >
                   Cancel
                 </button>
               </div>
@@ -234,15 +271,28 @@ export default function GoalPlanner({ compact = false }) {
         </div>
       )}
 
+      {/* READ-ONLY VIEW */}
       {!loading && hasGoal && !editing && (
         <div className="goalplanner-view">
           {!compact && <h3>Your Current Goal</h3>}
-          <p><strong>Goal:</strong> {goal}</p>
-          <p><strong>Calories:</strong> {macros.calories} kcal/day</p>
-          <p><strong>Protein:</strong> {macros.protein} g/day</p>
-          <p><strong>Carbs:</strong> {macros.carbs} g/day</p>
-          <p><strong>Fat:</strong> {macros.fat} g/day</p>
-          <p><strong>Timeframe:</strong> {timeframe} weeks</p>
+          <p>
+            <strong>Goal:</strong> {goal}
+          </p>
+          <p>
+            <strong>Calories:</strong> {macros.calories} kcal/day
+          </p>
+          <p>
+            <strong>Protein:</strong> {macros.protein} g/day
+          </p>
+          <p>
+            <strong>Carbs:</strong> {macros.carbs} g/day
+          </p>
+          <p>
+            <strong>Fat:</strong> {macros.fat} g/day
+          </p>
+          <p>
+            <strong>Timeframe:</strong> {timeframe} weeks
+          </p>
         </div>
       )}
     </div>
